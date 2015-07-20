@@ -22,9 +22,7 @@
       </p>
 
       <%= link_to "Write a Review", new_restaurant_review_path(@restaurant), class: 'btn btn-primary' %>
-    
-      <%= link_to 'Edit', edit_restaurant_path(@restaurant), class: 'btn btn-link' %> |
-      <%= link_to 'Back', restaurants_path, class: 'btn btn-link' %>
+   
   </div>
   
   <div class="col-md-9">
@@ -35,7 +33,7 @@
     <% else %>
       <% @reviews.each do |review| %>
         <div class="well">
-          <p><%= review.rating %></p>
+          <div class="star" data-score= <%= review.rating %> ></div>
           <p><%= review.comment %></p>
         </div>
       <% end %>
@@ -43,7 +41,18 @@
   </div>
 </div>
 
+<%= link_to 'Edit', edit_restaurant_path(@restaurant), class: 'btn btn-link' %> |
+      <%= link_to 'Back', restaurants_path, class: 'btn btn-link' %>
 
+<script>
+  $('.star').raty({
+    path: 'https://s3.amazonaws.com/grayyelpdemo/stars',
+    readOnly: true,
+    score: function() {
+    return $(this).attr('data-score');
+  }
+  });
+</script>
 
 
 
