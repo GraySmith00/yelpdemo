@@ -2,26 +2,29 @@
   <div class="col-md-3">
     <%= image_tag @restaurant.image_url %>
 
-      <h2>
-        <%= @restaurant.name %>
-      </h2>
+    <h2>
+      <%= @restaurant.name %>
+    </h2>
 
-      <p>
-        <strong>Address:</strong>
-        <%= @restaurant.address %>
-      </p>
+    <div class="star" data-score= <%= @avg_rating %> ></div>
+    <p><%= "Based on #{@reviews.length} reviews" %></p>
 
-      <p>
-        <strong>Phone:</strong>
-        <%= @restaurant.phone %>
-      </p>
+    <p>
+      <strong>Address:</strong>
+      <%= @restaurant.address %>
+    </p>
 
-      <p>
-        <strong>Website:</strong>
-        <%= link_to @restaurant.website, @restaurant.website %>
-      </p>
+    <p>
+      <strong>Phone:</strong>
+      <%= @restaurant.phone %>
+    </p>
 
-      <%= link_to "Write a Review", new_restaurant_review_path(@restaurant), class: 'btn btn-primary' %>
+    <p>
+      <strong>Website:</strong>
+      <%= link_to @restaurant.website, @restaurant.website %>
+    </p>
+
+    <%= link_to "Write a Review", new_restaurant_review_path(@restaurant), class: 'btn btn-primary' %>
    
   </div>
   
@@ -31,12 +34,19 @@
         <h3>Be the first to write a review for this restaurant!</h3>
       </div>
     <% else %>
-      <% @reviews.each do |review| %>
-        <div class="well">
-          <div class="star" data-score= <%= review.rating %> ></div>
-          <p><%= review.comment %></p>
-        </div>
-      <% end %>
+      <table class='table'>
+        <tbody>
+          <% @reviews.each do |review| %>
+            <tr>
+              <td>
+                <div class="star" data-score= <%= review.rating %> ></div>
+                <p><%= review.comment %></p>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      
     <% end %>
   </div>
 </div>
