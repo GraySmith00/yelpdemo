@@ -13,8 +13,9 @@ class RestaurantsController < ApplicationController
     @reviews = Review.where(restaurant_id: @restaurant.id)
     if @reviews.blank?
       @avg_rating = 0
+    else
+      @avg_rating = @reviews.average(:rating).round(2)
     end
-    @avg_rating = @reviews.average(:rating).round(2)
   end
 
   # GET /restaurants/new
