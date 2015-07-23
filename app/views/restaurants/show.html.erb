@@ -57,8 +57,8 @@
                 
                 <% if user_signed_in? %>
                   <% if (review.user == current_user) || (current_user.admin?) %>
-                <%= link_to "Edit Review", edit_restaurant_review_path(@restaurant, review), class: 'btn btn-primary' %>
-                <%= link_to "Delete Review", restaurant_review_path(@restaurant, review), method: :delete, class: 'btn btn-danger' %>
+                    <%= link_to "Edit Review", edit_restaurant_review_path(@restaurant, review), class: 'btn btn-primary' %>
+                    <%= link_to "Delete Review", restaurant_review_path(@restaurant, review), method: :delete, class: 'btn btn-danger' %>
                   <% end %>
                 <% end %>
                 
