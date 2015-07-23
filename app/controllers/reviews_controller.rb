@@ -49,7 +49,7 @@ class ReviewsController < ApplicationController
     @review.destroy
     
     respond_to do |format|
-      format.html { redirect_to reviews_url, notice: "Review was successfully destroyed." }
+      format.html { redirect_to restaurant_path(@restaurant), notice: "Review was successfully destroyed." }
       format.json { head :no_content }
     end
   end
